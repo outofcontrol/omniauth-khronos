@@ -9,8 +9,8 @@ module OmniAuth
       option :name, "Khronos"
 
       option :client_options, {
-        :site => 'https://authserver.khronos.org',
-        :authorize_url => "https://authserver.khronos.org/oauth/authorize",
+        :site => 'https://authserve.khronos.org',
+        :authorize_url => "https://authserve.khronos.org/oauth/authorize",
         :token_url => '/oauth/access_token'
       }
 
