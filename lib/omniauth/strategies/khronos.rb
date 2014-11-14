@@ -18,11 +18,8 @@ module OmniAuth
 
       def authorize_params
         super.tap do |params|
-          %w[display scope auth_type].each do |v|
-            if request.params[v]
-              params[v.to_sym] = request.params[v]
-            end
-          end
+          params[:site] = 'https://authserve.khronos.org' if params[:site].nil?
+          params[:authorize_url] = 'https://authserve.khronos.org/oauth/authorize' if params[:authorize_url].nil?
 
           params[:scope] ||= DEFAULT_SCOPE
         end
