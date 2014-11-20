@@ -10,7 +10,7 @@ module OmniAuth
 
       option :client_options, {
         :site => 'https://authserve.khronos.org',
-        :authorize_url => "https://authserve.khronos.org/oauth/authorize",
+        :authorize_url => "/oauth/authorize",
         :token_url => '/oauth/access_token'
       }
 
@@ -18,16 +18,13 @@ module OmniAuth
 
       def authorize_params
         super.tap do |params|
-          params[:site] = 'https://authserve.khronos.org' if params[:site].nil?
-          params[:authorize_url] = 'https://authserve.khronos.org/oauth/authorize' if params[:authorize_url].nil?
-
           params[:scope] ||= DEFAULT_SCOPE
         end
       end
 
       info do
         {
-          :name => raw_info['name'],
+          :username => raw_info['username'],
           :email => raw_info['email']
         }
       end
